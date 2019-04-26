@@ -10,7 +10,7 @@ services:
             - '3000:3000'
         # volumes:
         #     - ./:/usr/src/smart-brain-api # no anda en windows, requiere algunos trucos
-        links:
+        links: # deprecated, no need to use it anymore. Now a 'network' is automatically created
             - postgres
         environment:
             POSTGRES_URI: postgres://sally:secret@postgres:5432/smart-brain-docker

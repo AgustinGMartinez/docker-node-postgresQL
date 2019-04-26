@@ -13,7 +13,11 @@ You can grab Clarifai API key [here](https://www.clarifai.com/)
 
 # Docker
 
-1. Run `npm run docker-build -- -t [name_and_version]`
+1. Run `docker-compose up --build`
+
+Or (with no db):
+
+1. Run `npm run docker-build`
 2. Run `npm run docker-run`
 
 That's it, your're already in production mod.
