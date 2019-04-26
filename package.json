@@ -1,0 +1,29 @@
+{
+	"name": "node",
+	"version": "1.0.0",
+	"main": "script.js",
+	"scripts": {
+		"start": "nodemon server.js",
+		"docker-build": "docker build . -t api_1.0",
+		"docker-run": "docker run --name api -it -d -p 3000:3000 api_1.0",
+		"docker-remove": "docker stop api && docker rm api",
+		"prod": "node server.js"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"bcrypt-nodejs": "0.0.3",
+		"body-parser": "^1.18.2",
+		"clarifai": "^2.5.0",
+		"cors": "^2.8.4",
+		"express": "^4.16.2",
+		"knex": "^0.14.2",
+		"morgan": "^1.9.1",
+		"pg": "^7.4.0"
+	},
+	"devDependencies": {
+		"nodemon": "^1.12.7"
+	},
+	"description": ""
+}

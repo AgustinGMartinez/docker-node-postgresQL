@@ -1,0 +1,28 @@
+version: '3.7'
+
+services:
+    smart-brain-api:
+        container_name: api
+        build: ./ #instruct to say to use Dockerfile with this
+        command: npm run prod
+        working_dir: /usr/src/smart-brain-api
+        ports:
+            - '3000:3000'
+        # volumes:
+        #     - ./:/usr/src/smart-brain-api # no anda en windows, requiere algunos trucos
+        links:
+            - postgres
+        environment:
+            POSTGRES_URI: postgres://sally:secret@postgres:5432/smart-brain-docker
+
+    postgres:
+        # container_name: postgres # conflics because the image has the name set in
+        environment: # de esta manera le pasamos usuario, host y base de datos a usar
+            POSTGRES_HOST: postgres
+            POSTGRES_USER: sally
+            POSTGRES_PASSWORD: secret
+            POSTGRES_DB: smart-brain-docker
+        # image: postgres # usamos directamente la imagen para hacer el build, no hacemos un build custom
+        build: ./postgres
+        ports:
+            - '5433:5432'
